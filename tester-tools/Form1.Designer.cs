@@ -384,7 +384,7 @@
             optionsGroupbox.Controls.Add(optionTINCountGroupbox);
             optionsGroupbox.Location = new Point(568, 12);
             optionsGroupbox.Name = "optionsGroupbox";
-            optionsGroupbox.Size = new Size(284, 595);
+            optionsGroupbox.Size = new Size(284, 593);
             optionsGroupbox.TabIndex = 3;
             optionsGroupbox.TabStop = false;
             optionsGroupbox.Text = "Опции";
