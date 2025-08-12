@@ -28,6 +28,7 @@ namespace tester_tools
             copyTooltip.SetToolTip(this.SNILSCopy, "Скопировать в буфер обмена");
             copyTooltip.SetToolTip(this.symbolsGenerateCopy, "Скопировать в буфер обмена");
             optionFileGenerateSizeNumeric.Maximum = 10000;
+            optionTextGenerateFilePath.Text = AppDomain.CurrentDomain.BaseDirectory;
         }
 
         private void TINCopy_Click(object sender, EventArgs e)
@@ -148,15 +149,27 @@ namespace tester_tools
             }
             else
             {
-                var rootPath = AppDomain.CurrentDomain.BaseDirectory;
+                var rootPath = optionTextGenerateFilePath.Text;
                 var filePath = Path.Combine(rootPath, "generated_text.txt");
                 if (File.Exists(filePath))
                 {
                     File.Delete(filePath);
                 }
-                File.WriteAllText(filePath, generatedtext);
+                try
+                {
+                    File.WriteAllText(filePath, generatedtext);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Произошла ошибка при генерации! Проверьте указанный путь", "Что-то пошло не так", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 MessageBox.Show("Превышен лимит символов для отображения в программе. Текст сохранён в файл. Путь: " + filePath, "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Process.Start("explorer.exe", $"/select, \"{filePath}\"");
+                if (optionTextGenerateFilePathOpenYes.Checked)
+                {
+                    Process.Start("explorer.exe", $"/select, \"{filePath}\"");
+                }
             }
         }
 
@@ -194,8 +207,17 @@ namespace tester_tools
                          optionFileGenerateGB.Checked ? optionFileGenerateGB.Text : throw new NotImplementedException("Как ты сюда попал? о_О");
 
             // Генерация файла
-            FileGenerator.Generate(filePath, (long)optionFileGenerateSizeNumeric.Value, unit);
+            try
+            {
+                FileGenerator.Generate(filePath, (long)optionFileGenerateSizeNumeric.Value, unit);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Произошла ошибка при генерации! Проверьте указанный путь", "Что-то пошло не так", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             MessageBox.Show($"Файл успешно сгенерирован! Путь: {filePath}", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             if (optionFileGenerateShowYes.Checked)
             {
                 Process.Start("explorer.exe", $"/select, \"{filePath}\"");
@@ -228,6 +250,15 @@ namespace tester_tools
             optionFileGenerateFormatTextbox.Focus();
             optionFileGenerateFormatTextbox.Select(optionFileGenerateFormatTextbox.Text.Length, 0);
             optionFileGenerateFormatTextbox.ScrollToCaret();
+        }
+
+        private void optionTextGenerateFilePathButton_Click(object sender, EventArgs e)
+        {
+            DialogResult selectFolder = folderBrowseDialog.ShowDialog();
+            if (selectFolder == DialogResult.OK)
+            {
+                optionTextGenerateFilePath.Text = folderBrowseDialog.SelectedPath;
+            }
         }
     }
 }

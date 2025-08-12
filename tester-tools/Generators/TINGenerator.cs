@@ -26,7 +26,7 @@ namespace tester_tools.Generators
 
             if (inn.Length == 10)
             {
-                int[] digits = inn.Select(c => c - '0').ToArray();
+                int[] digits = [.. inn.Select(c => c - '0')];
                 int check = (2 * digits[0] + 4 * digits[1] + 10 * digits[2] +
                             3 * digits[3] + 5 * digits[4] + 9 * digits[5] +
                             4 * digits[6] + 6 * digits[7] + 8 * digits[8]) % 11 % 10;
@@ -35,7 +35,7 @@ namespace tester_tools.Generators
             }
             else if (inn.Length == 12)
             {
-                int[] digits = inn.Select(c => c - '0').ToArray();
+                int[] digits = [.. inn.Select(c => c - '0')];
 
                 int check1 = (7 * digits[0] + 2 * digits[1] + 4 * digits[2] +
                              10 * digits[3] + 3 * digits[4] + 5 * digits[5] +

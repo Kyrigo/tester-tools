@@ -64,6 +64,12 @@
             optionFileGenerateSizeLabel = new Label();
             optionFileGenerateFormatLabel = new Label();
             optionSymbolsCountGroupbox = new GroupBox();
+            optionTextGenerateFileGroupbox = new GroupBox();
+            optionTextGenerateFilePathButton = new Button();
+            optionTextGenerateFilePath = new TextBox();
+            optionTextGenerateFilePathOpen = new GroupBox();
+            optionTextGenerateFilePathOpenNo = new RadioButton();
+            optionTextGenerateFilePathOpenYes = new RadioButton();
             symbolsCountNumeric = new NumericUpDown();
             symbolsCountInfo = new Label();
             optionCheckTINGroupbox = new GroupBox();
@@ -89,6 +95,8 @@
             optionFileGenerateShowGroupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)optionFileGenerateSizeNumeric).BeginInit();
             optionSymbolsCountGroupbox.SuspendLayout();
+            optionTextGenerateFileGroupbox.SuspendLayout();
+            optionTextGenerateFilePathOpen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)symbolsCountNumeric).BeginInit();
             optionCheckTINGroupbox.SuspendLayout();
             optionTINCountGroupbox.SuspendLayout();
@@ -329,7 +337,7 @@
             optionsGroupbox.Controls.Add(optionTINCountGroupbox);
             optionsGroupbox.Location = new Point(568, 12);
             optionsGroupbox.Name = "optionsGroupbox";
-            optionsGroupbox.Size = new Size(284, 557);
+            optionsGroupbox.Size = new Size(284, 595);
             optionsGroupbox.TabIndex = 3;
             optionsGroupbox.TabStop = false;
             optionsGroupbox.Text = "Опции";
@@ -344,7 +352,7 @@
             optionFileGenerateGroupbox.Controls.Add(optionFileGenerateKB);
             optionFileGenerateGroupbox.Controls.Add(optionFileGenerateSizeLabel);
             optionFileGenerateGroupbox.Controls.Add(optionFileGenerateFormatLabel);
-            optionFileGenerateGroupbox.Location = new Point(6, 235);
+            optionFileGenerateGroupbox.Location = new Point(6, 390);
             optionFileGenerateGroupbox.Name = "optionFileGenerateGroupbox";
             optionFileGenerateGroupbox.Size = new Size(272, 194);
             optionFileGenerateGroupbox.TabIndex = 6;
@@ -457,19 +465,82 @@
             // 
             // optionSymbolsCountGroupbox
             // 
+            optionSymbolsCountGroupbox.Controls.Add(optionTextGenerateFileGroupbox);
+            optionSymbolsCountGroupbox.Controls.Add(optionTextGenerateFilePathOpen);
             optionSymbolsCountGroupbox.Controls.Add(symbolsCountNumeric);
             optionSymbolsCountGroupbox.Controls.Add(symbolsCountInfo);
             optionSymbolsCountGroupbox.Location = new Point(6, 142);
             optionSymbolsCountGroupbox.Name = "optionSymbolsCountGroupbox";
-            optionSymbolsCountGroupbox.Size = new Size(272, 87);
+            optionSymbolsCountGroupbox.Size = new Size(272, 242);
             optionSymbolsCountGroupbox.TabIndex = 5;
             optionSymbolsCountGroupbox.TabStop = false;
             optionSymbolsCountGroupbox.Text = "Количество символов для генерации";
             // 
+            // optionTextGenerateFileGroupbox
+            // 
+            optionTextGenerateFileGroupbox.Controls.Add(optionTextGenerateFilePathButton);
+            optionTextGenerateFileGroupbox.Controls.Add(optionTextGenerateFilePath);
+            optionTextGenerateFileGroupbox.Location = new Point(6, 81);
+            optionTextGenerateFileGroupbox.Name = "optionTextGenerateFileGroupbox";
+            optionTextGenerateFileGroupbox.Size = new Size(266, 87);
+            optionTextGenerateFileGroupbox.TabIndex = 11;
+            optionTextGenerateFileGroupbox.TabStop = false;
+            optionTextGenerateFileGroupbox.Text = "Путь к файлу";
+            // 
+            // optionTextGenerateFilePathButton
+            // 
+            optionTextGenerateFilePathButton.Location = new Point(6, 51);
+            optionTextGenerateFilePathButton.Name = "optionTextGenerateFilePathButton";
+            optionTextGenerateFilePathButton.Size = new Size(254, 23);
+            optionTextGenerateFilePathButton.TabIndex = 19;
+            optionTextGenerateFilePathButton.Text = "Обзор";
+            optionTextGenerateFilePathButton.UseVisualStyleBackColor = true;
+            optionTextGenerateFilePathButton.Click += optionTextGenerateFilePathButton_Click;
+            // 
+            // optionTextGenerateFilePath
+            // 
+            optionTextGenerateFilePath.Location = new Point(6, 22);
+            optionTextGenerateFilePath.Name = "optionTextGenerateFilePath";
+            optionTextGenerateFilePath.Size = new Size(254, 23);
+            optionTextGenerateFilePath.TabIndex = 19;
+            // 
+            // optionTextGenerateFilePathOpen
+            // 
+            optionTextGenerateFilePathOpen.Controls.Add(optionTextGenerateFilePathOpenNo);
+            optionTextGenerateFilePathOpen.Controls.Add(optionTextGenerateFilePathOpenYes);
+            optionTextGenerateFilePathOpen.Location = new Point(6, 174);
+            optionTextGenerateFilePathOpen.Name = "optionTextGenerateFilePathOpen";
+            optionTextGenerateFilePathOpen.Size = new Size(260, 52);
+            optionTextGenerateFilePathOpen.TabIndex = 10;
+            optionTextGenerateFilePathOpen.TabStop = false;
+            optionTextGenerateFilePathOpen.Text = "Открыть местоположение?";
+            // 
+            // optionTextGenerateFilePathOpenNo
+            // 
+            optionTextGenerateFilePathOpenNo.AutoSize = true;
+            optionTextGenerateFilePathOpenNo.Checked = true;
+            optionTextGenerateFilePathOpenNo.Location = new Point(51, 22);
+            optionTextGenerateFilePathOpenNo.Name = "optionTextGenerateFilePathOpenNo";
+            optionTextGenerateFilePathOpenNo.Size = new Size(45, 19);
+            optionTextGenerateFilePathOpenNo.TabIndex = 1;
+            optionTextGenerateFilePathOpenNo.TabStop = true;
+            optionTextGenerateFilePathOpenNo.Text = "Нет";
+            optionTextGenerateFilePathOpenNo.UseVisualStyleBackColor = true;
+            // 
+            // optionTextGenerateFilePathOpenYes
+            // 
+            optionTextGenerateFilePathOpenYes.AutoSize = true;
+            optionTextGenerateFilePathOpenYes.Location = new Point(6, 22);
+            optionTextGenerateFilePathOpenYes.Name = "optionTextGenerateFilePathOpenYes";
+            optionTextGenerateFilePathOpenYes.Size = new Size(39, 19);
+            optionTextGenerateFilePathOpenYes.TabIndex = 0;
+            optionTextGenerateFilePathOpenYes.Text = "Да";
+            optionTextGenerateFilePathOpenYes.UseVisualStyleBackColor = true;
+            // 
             // symbolsCountNumeric
             // 
             symbolsCountNumeric.Location = new Point(6, 22);
-            symbolsCountNumeric.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            symbolsCountNumeric.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             symbolsCountNumeric.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             symbolsCountNumeric.Name = "symbolsCountNumeric";
             symbolsCountNumeric.Size = new Size(260, 23);
@@ -605,7 +676,7 @@
             // 
             // fileGenerateBrowseFolder
             // 
-            fileGenerateBrowseFolder.Location = new Point(118, 66);
+            fileGenerateBrowseFolder.Location = new Point(155, 66);
             fileGenerateBrowseFolder.Name = "fileGenerateBrowseFolder";
             fileGenerateBrowseFolder.Size = new Size(100, 23);
             fileGenerateBrowseFolder.TabIndex = 18;
@@ -626,14 +697,13 @@
             // 
             fileGeneratePath.Location = new Point(92, 36);
             fileGeneratePath.Name = "fileGeneratePath";
-            fileGeneratePath.ReadOnly = true;
             fileGeneratePath.Size = new Size(452, 23);
             fileGeneratePath.TabIndex = 16;
             // 
             // fileGenerateButton
             // 
             fileGenerateButton.Enabled = false;
-            fileGenerateButton.Location = new Point(333, 66);
+            fileGenerateButton.Location = new Point(370, 66);
             fileGenerateButton.Name = "fileGenerateButton";
             fileGenerateButton.Size = new Size(100, 23);
             fileGenerateButton.TabIndex = 15;
@@ -645,7 +715,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(864, 581);
+            ClientSize = new Size(864, 617);
             Controls.Add(fileGenerateGroupbox);
             Controls.Add(checkTINGroupbox);
             Controls.Add(optionsGroupbox);
@@ -656,7 +726,7 @@
             MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "tester-tools v0.1";
+            Text = "tester-tools v0.2";
             FormClosing += MainForm_FormClosing;
             Load += MainForm_Load;
             generateGroupBox.ResumeLayout(false);
@@ -669,6 +739,10 @@
             ((System.ComponentModel.ISupportInitialize)optionFileGenerateSizeNumeric).EndInit();
             optionSymbolsCountGroupbox.ResumeLayout(false);
             optionSymbolsCountGroupbox.PerformLayout();
+            optionTextGenerateFileGroupbox.ResumeLayout(false);
+            optionTextGenerateFileGroupbox.PerformLayout();
+            optionTextGenerateFilePathOpen.ResumeLayout(false);
+            optionTextGenerateFilePathOpen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)symbolsCountNumeric).EndInit();
             optionCheckTINGroupbox.ResumeLayout(false);
             optionCheckTINGroupbox.PerformLayout();
@@ -736,5 +810,11 @@
         private GroupBox optionFileGenerateShowGroupbox;
         private RadioButton optionFileGenerateShowNo;
         private RadioButton optionFileGenerateShowYes;
+        private GroupBox optionTextGenerateFileGroupbox;
+        private GroupBox optionTextGenerateFilePathOpen;
+        private RadioButton optionTextGenerateFilePathOpenNo;
+        private RadioButton optionTextGenerateFilePathOpenYes;
+        private Button optionTextGenerateFilePathButton;
+        private TextBox optionTextGenerateFilePath;
     }
 }
