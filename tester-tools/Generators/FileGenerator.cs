@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace tester_tools.Generators
+﻿namespace tester_tools.Generators
 {
     internal class FileGenerator
     {
@@ -12,7 +6,6 @@ namespace tester_tools.Generators
         {
             long sizeInBytes = checkedOption switch
             {
-                "Б" => throw new NotImplementedException("Как ты сюда попал? о_О"),
                 "КБ" => size * 1024L,
                 "МБ" => size * 1024L * 1024L,
                 "ГБ" => size * 1024L * 1024L * 1024L,

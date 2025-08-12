@@ -190,7 +190,7 @@ namespace tester_tools
             // Определение выбранной единицы измерения
             string unit = optionFileGenerateKB.Checked ? optionFileGenerateKB.Text :
                          optionFileGenerateMB.Checked ? optionFileGenerateMB.Text :
-                         optionFileGenerateGB.Checked ? optionFileGenerateGB.Text : "Б";
+                         optionFileGenerateGB.Checked ? optionFileGenerateGB.Text : throw new NotImplementedException("Как ты сюда попал? о_О");
 
             // Генерация файла
             FileGenerator.Generate(filePath, (long)optionFileGenerateSizeNumeric.Value, unit);
