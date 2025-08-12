@@ -33,6 +33,10 @@
             TINTextbox = new TextBox();
             TINLabel = new Label();
             generateGroupBox = new GroupBox();
+            phoneGenerateCopy = new Button();
+            phoneGenerateButton = new Button();
+            phoneGenerateTextbox = new TextBox();
+            phoneGenerateLabel = new Label();
             symbolsGenerateCopy = new Button();
             KPPCopy = new Button();
             SNILSCopy = new Button();
@@ -124,6 +128,10 @@
             // 
             // generateGroupBox
             // 
+            generateGroupBox.Controls.Add(phoneGenerateCopy);
+            generateGroupBox.Controls.Add(phoneGenerateButton);
+            generateGroupBox.Controls.Add(phoneGenerateTextbox);
+            generateGroupBox.Controls.Add(phoneGenerateLabel);
             generateGroupBox.Controls.Add(symbolsGenerateCopy);
             generateGroupBox.Controls.Add(KPPCopy);
             generateGroupBox.Controls.Add(SNILSCopy);
@@ -146,10 +154,49 @@
             generateGroupBox.Controls.Add(TINLabel);
             generateGroupBox.Location = new Point(12, 12);
             generateGroupBox.Name = "generateGroupBox";
-            generateGroupBox.Size = new Size(550, 371);
+            generateGroupBox.Size = new Size(550, 407);
             generateGroupBox.TabIndex = 2;
             generateGroupBox.TabStop = false;
             generateGroupBox.Text = "Генерация значений";
+            // 
+            // phoneGenerateCopy
+            // 
+            phoneGenerateCopy.BackgroundImage = Properties.Resources._1621635;
+            phoneGenerateCopy.BackgroundImageLayout = ImageLayout.Stretch;
+            phoneGenerateCopy.Location = new Point(385, 365);
+            phoneGenerateCopy.Name = "phoneGenerateCopy";
+            phoneGenerateCopy.Size = new Size(25, 23);
+            phoneGenerateCopy.TabIndex = 23;
+            phoneGenerateCopy.UseVisualStyleBackColor = true;
+            phoneGenerateCopy.Click += phoneGenerateCopy_Click;
+            // 
+            // phoneGenerateButton
+            // 
+            phoneGenerateButton.Location = new Point(416, 366);
+            phoneGenerateButton.Name = "phoneGenerateButton";
+            phoneGenerateButton.Size = new Size(100, 23);
+            phoneGenerateButton.TabIndex = 22;
+            phoneGenerateButton.Text = "Сгенерировать";
+            phoneGenerateButton.UseVisualStyleBackColor = true;
+            phoneGenerateButton.Click += phoneGenerateButton_Click;
+            // 
+            // phoneGenerateTextbox
+            // 
+            phoneGenerateTextbox.Location = new Point(64, 366);
+            phoneGenerateTextbox.Name = "phoneGenerateTextbox";
+            phoneGenerateTextbox.PlaceholderText = "Телефон";
+            phoneGenerateTextbox.ReadOnly = true;
+            phoneGenerateTextbox.Size = new Size(315, 23);
+            phoneGenerateTextbox.TabIndex = 20;
+            // 
+            // phoneGenerateLabel
+            // 
+            phoneGenerateLabel.AutoSize = true;
+            phoneGenerateLabel.Location = new Point(6, 369);
+            phoneGenerateLabel.Name = "phoneGenerateLabel";
+            phoneGenerateLabel.Size = new Size(55, 15);
+            phoneGenerateLabel.TabIndex = 21;
+            phoneGenerateLabel.Text = "Телефон";
             // 
             // symbolsGenerateCopy
             // 
@@ -627,7 +674,7 @@
             checkTINGroupbox.Controls.Add(checkTINButton);
             checkTINGroupbox.Controls.Add(checkTINLabel);
             checkTINGroupbox.Controls.Add(checkTINTextbox);
-            checkTINGroupbox.Location = new Point(12, 389);
+            checkTINGroupbox.Location = new Point(12, 425);
             checkTINGroupbox.Name = "checkTINGroupbox";
             checkTINGroupbox.Size = new Size(550, 79);
             checkTINGroupbox.TabIndex = 4;
@@ -667,7 +714,7 @@
             fileGenerateGroupbox.Controls.Add(fileGeneratePathLabel);
             fileGenerateGroupbox.Controls.Add(fileGeneratePath);
             fileGenerateGroupbox.Controls.Add(fileGenerateButton);
-            fileGenerateGroupbox.Location = new Point(12, 474);
+            fileGenerateGroupbox.Location = new Point(12, 510);
             fileGenerateGroupbox.Name = "fileGenerateGroupbox";
             fileGenerateGroupbox.Size = new Size(550, 95);
             fileGenerateGroupbox.TabIndex = 5;
@@ -816,5 +863,9 @@
         private RadioButton optionTextGenerateFilePathOpenYes;
         private Button optionTextGenerateFilePathButton;
         private TextBox optionTextGenerateFilePath;
+        private Button phoneGenerateCopy;
+        private Button phoneGenerateButton;
+        private TextBox phoneGenerateTextbox;
+        private Label phoneGenerateLabel;
     }
 }

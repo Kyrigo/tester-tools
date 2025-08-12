@@ -91,6 +91,18 @@ namespace tester_tools
             }
         }
 
+        private void phoneGenerateCopy_Click(object sender, EventArgs e)
+        {
+            if (phoneGenerateTextbox.Text != string.Empty)
+            {
+                Clipboard.SetText(phoneGenerateTextbox.Text);
+            }
+            else
+            {
+                copyTooltip.Show("Сначала сгенерируй значение", phoneGenerateTextbox, 3000);
+            }
+        }
+
         private void FileGenerateBrowseFolder_Click(object sender, EventArgs e)
         {
             DialogResult selectFolder = folderBrowseDialog.ShowDialog();
@@ -132,6 +144,11 @@ namespace tester_tools
         private void SNILSButton_Click(object sender, EventArgs e)
         {
             SNILSTextbox.Text = SNILSGenerator.Generate();
+        }
+
+        private void phoneGenerateButton_Click(object sender, EventArgs e)
+        {
+            phoneGenerateTextbox.Text = PhoneGenerator.Generate();
         }
 
         private void checkTINButton_Click(object sender, EventArgs e)
