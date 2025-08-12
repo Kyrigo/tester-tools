@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             TINTextbox = new TextBox();
             TINLabel = new Label();
             generateGroupBox = new GroupBox();
@@ -651,6 +652,7 @@
             Controls.Add(generateGroupBox);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             HelpButton = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
