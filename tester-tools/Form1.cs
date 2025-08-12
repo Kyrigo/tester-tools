@@ -156,6 +156,7 @@ namespace tester_tools
                 }
                 File.WriteAllText(filePath, generatedtext);
                 MessageBox.Show("Превышен лимит символов для отображения в программе. Текст сохранён в файл. Путь: " + filePath, "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Process.Start("explorer.exe", $"/select, \"{filePath}\"");
             }
         }
 

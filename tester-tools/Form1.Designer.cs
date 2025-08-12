@@ -654,7 +654,7 @@
             MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "tester-tools v1.0";
+            Text = "tester-tools v0.1";
             FormClosing += MainForm_FormClosing;
             Load += MainForm_Load;
             generateGroupBox.ResumeLayout(false);
