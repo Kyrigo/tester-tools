@@ -280,18 +280,25 @@ namespace tester_tools
 
         private void dateCheckButton_Click(object sender, EventArgs e)
         {
-            var days = DaysBetweenDates(dateCheckFrom.Value, dateCheckTo.Value);
+            int days;
 
-            if (optionsDateCheckYes.Checked)
+            var includeFromDate = optionsDateCheckYes.Checked;
+
+            if (optionsDateCheckCalendarDays.Checked)
             {
-                dateCheckResult.Text = $"{days + 1} дней/дня";
-                dateCheckResult.Visible = true;
+                days = CalculateCalendarDays(dateCheckFrom.Value, dateCheckTo.Value, includeFromDate);
+            }
+            else if (optionsDateCheckWorkDays.Checked)
+            {
+                days = CalculateBusinessDays(dateCheckFrom.Value, dateCheckTo.Value, includeFromDate);
             }
             else
             {
-                dateCheckResult.Text = $"{days} дней/дня";
-                dateCheckResult.Visible = true;
+                days = CalculateCalendarDays(dateCheckFrom.Value, dateCheckTo.Value, includeFromDate);
             }
+
+            dateCheckResult.Text = $"{days} дней/дня";
+            dateCheckResult.Visible = true;
         }
     }
 }

@@ -56,7 +56,10 @@
             OGRNTextbox = new TextBox();
             OGRNLabel = new Label();
             optionsGroupbox = new GroupBox();
-            optionsDateCheckControls = new GroupBox();
+            optionsDateCheckDayType = new GroupBox();
+            optionsDateCheckWorkDays = new RadioButton();
+            optionsDateCheckCalendarDays = new RadioButton();
+            optionsDateCheckIncludeDay = new GroupBox();
             optionsDateCheckNo = new RadioButton();
             optionsDateCheckYes = new RadioButton();
             optionFileGenerateGroupbox = new GroupBox();
@@ -104,7 +107,8 @@
             dateCheckFrom = new DateTimePicker();
             generateGroupBox.SuspendLayout();
             optionsGroupbox.SuspendLayout();
-            optionsDateCheckControls.SuspendLayout();
+            optionsDateCheckDayType.SuspendLayout();
+            optionsDateCheckIncludeDay.SuspendLayout();
             optionFileGenerateGroupbox.SuspendLayout();
             optionFileGenerateShowGroupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)optionFileGenerateSizeNumeric).BeginInit();
@@ -389,28 +393,62 @@
             // 
             // optionsGroupbox
             // 
-            optionsGroupbox.Controls.Add(optionsDateCheckControls);
+            optionsGroupbox.Controls.Add(optionsDateCheckDayType);
+            optionsGroupbox.Controls.Add(optionsDateCheckIncludeDay);
             optionsGroupbox.Controls.Add(optionFileGenerateGroupbox);
             optionsGroupbox.Controls.Add(optionSymbolsCountGroupbox);
             optionsGroupbox.Controls.Add(optionCheckTINGroupbox);
             optionsGroupbox.Controls.Add(optionTINCountGroupbox);
             optionsGroupbox.Location = new Point(568, 12);
             optionsGroupbox.Name = "optionsGroupbox";
-            optionsGroupbox.Size = new Size(284, 677);
+            optionsGroupbox.Size = new Size(284, 702);
             optionsGroupbox.TabIndex = 3;
             optionsGroupbox.TabStop = false;
             optionsGroupbox.Text = "Опции";
             // 
-            // optionsDateCheckControls
+            // optionsDateCheckDayType
             // 
-            optionsDateCheckControls.Controls.Add(optionsDateCheckNo);
-            optionsDateCheckControls.Controls.Add(optionsDateCheckYes);
-            optionsDateCheckControls.Location = new Point(6, 590);
-            optionsDateCheckControls.Name = "optionsDateCheckControls";
-            optionsDateCheckControls.Size = new Size(272, 50);
-            optionsDateCheckControls.TabIndex = 7;
-            optionsDateCheckControls.TabStop = false;
-            optionsDateCheckControls.Text = "Учитывать текущий день?";
+            optionsDateCheckDayType.Controls.Add(optionsDateCheckWorkDays);
+            optionsDateCheckDayType.Controls.Add(optionsDateCheckCalendarDays);
+            optionsDateCheckDayType.Location = new Point(6, 590);
+            optionsDateCheckDayType.Name = "optionsDateCheckDayType";
+            optionsDateCheckDayType.Size = new Size(272, 50);
+            optionsDateCheckDayType.TabIndex = 8;
+            optionsDateCheckDayType.TabStop = false;
+            optionsDateCheckDayType.Text = "Тип дней";
+            // 
+            // optionsDateCheckWorkDays
+            // 
+            optionsDateCheckWorkDays.AutoSize = true;
+            optionsDateCheckWorkDays.Location = new Point(109, 22);
+            optionsDateCheckWorkDays.Name = "optionsDateCheckWorkDays";
+            optionsDateCheckWorkDays.Size = new Size(72, 19);
+            optionsDateCheckWorkDays.TabIndex = 3;
+            optionsDateCheckWorkDays.Text = "Рабочие";
+            optionsDateCheckWorkDays.UseVisualStyleBackColor = true;
+            // 
+            // optionsDateCheckCalendarDays
+            // 
+            optionsDateCheckCalendarDays.AutoSize = true;
+            optionsDateCheckCalendarDays.Checked = true;
+            optionsDateCheckCalendarDays.Location = new Point(4, 22);
+            optionsDateCheckCalendarDays.Name = "optionsDateCheckCalendarDays";
+            optionsDateCheckCalendarDays.Size = new Size(99, 19);
+            optionsDateCheckCalendarDays.TabIndex = 2;
+            optionsDateCheckCalendarDays.TabStop = true;
+            optionsDateCheckCalendarDays.Text = "Календарные";
+            optionsDateCheckCalendarDays.UseVisualStyleBackColor = true;
+            // 
+            // optionsDateCheckIncludeDay
+            // 
+            optionsDateCheckIncludeDay.Controls.Add(optionsDateCheckNo);
+            optionsDateCheckIncludeDay.Controls.Add(optionsDateCheckYes);
+            optionsDateCheckIncludeDay.Location = new Point(6, 646);
+            optionsDateCheckIncludeDay.Name = "optionsDateCheckIncludeDay";
+            optionsDateCheckIncludeDay.Size = new Size(272, 50);
+            optionsDateCheckIncludeDay.TabIndex = 7;
+            optionsDateCheckIncludeDay.TabStop = false;
+            optionsDateCheckIncludeDay.Text = "Учитывать текущий день?";
             // 
             // optionsDateCheckNo
             // 
@@ -864,7 +902,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(864, 700);
+            ClientSize = new Size(864, 726);
             Controls.Add(dateCheckGroupbox);
             Controls.Add(fileGenerateGroupbox);
             Controls.Add(checkTINGroupbox);
@@ -882,8 +920,10 @@
             generateGroupBox.ResumeLayout(false);
             generateGroupBox.PerformLayout();
             optionsGroupbox.ResumeLayout(false);
-            optionsDateCheckControls.ResumeLayout(false);
-            optionsDateCheckControls.PerformLayout();
+            optionsDateCheckDayType.ResumeLayout(false);
+            optionsDateCheckDayType.PerformLayout();
+            optionsDateCheckIncludeDay.ResumeLayout(false);
+            optionsDateCheckIncludeDay.PerformLayout();
             optionFileGenerateGroupbox.ResumeLayout(false);
             optionFileGenerateGroupbox.PerformLayout();
             optionFileGenerateShowGroupbox.ResumeLayout(false);
@@ -974,7 +1014,7 @@
         private Button phoneGenerateButton;
         private TextBox phoneGenerateTextbox;
         private Label phoneGenerateLabel;
-        private GroupBox optionsDateCheckControls;
+        private GroupBox optionsDateCheckIncludeDay;
         private RadioButton optionsDateCheckNo;
         private RadioButton optionsDateCheckYes;
         private GroupBox dateCheckGroupbox;
@@ -983,5 +1023,8 @@
         private DateTimePicker dateCheckFrom;
         private Label dateCheckResult;
         private Label label1;
+        private GroupBox optionsDateCheckDayType;
+        private RadioButton optionsDateCheckWorkDays;
+        private RadioButton optionsDateCheckCalendarDays;
     }
 }

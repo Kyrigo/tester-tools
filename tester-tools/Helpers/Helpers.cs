@@ -16,14 +16,56 @@
             }
         }
 
-        public static int DaysBetweenDates(DateTime dateFrom, DateTime dateTo)
+        public static int CalculateCalendarDays(DateTime dateFrom, DateTime dateTo, bool includeFromDate = false)
         {
-            if (dateFrom == dateTo)
+            var fromDate = DateOnly.FromDateTime(dateFrom);
+            var toDate = DateOnly.FromDateTime(dateTo);
+
+            if (fromDate > toDate)
             {
-                return 0;
+                (fromDate, toDate) = (toDate, fromDate);
             }
 
-            return dateTo.Subtract(dateFrom).Days;
+            int days = toDate.DayNumber - fromDate.DayNumber;
+
+            return includeFromDate ? days + 1 : days;
+        }
+
+        public static int CalculateBusinessDays(DateTime dateFrom, DateTime dateTo, bool includeFromDateIfMatch = false)
+        {
+            var fromDate = DateOnly.FromDateTime(dateFrom);
+            var toDate = DateOnly.FromDateTime(dateTo);
+
+            if (fromDate > toDate)
+            {
+                (fromDate, toDate) = (toDate, fromDate);
+            }
+
+            int totalDays = toDate.DayNumber - fromDate.DayNumber;
+            int businessDays = 0;
+
+            // Count business days in the range
+            for (int i = 0; i <= totalDays; i++)
+            {
+                var currentDate = fromDate.AddDays(i);
+                if (IsBusinessDay(currentDate))
+                {
+                    businessDays++;
+                }
+            }
+
+            // Adjust if we shouldn't include fromDate date
+            if (!includeFromDateIfMatch && IsBusinessDay(fromDate))
+            {
+                businessDays--;
+            }
+
+            return businessDays;
+        }
+
+        private static bool IsBusinessDay(DateOnly date)
+        {
+            return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
         }
     }
 }
