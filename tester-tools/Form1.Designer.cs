@@ -56,6 +56,9 @@
             OGRNTextbox = new TextBox();
             OGRNLabel = new Label();
             optionsGroupbox = new GroupBox();
+            optionsDateCheckControls = new GroupBox();
+            optionsDateCheckNo = new RadioButton();
+            optionsDateCheckYes = new RadioButton();
             optionFileGenerateGroupbox = new GroupBox();
             optionFileGenerateShowGroupbox = new GroupBox();
             optionFileGenerateShowNo = new RadioButton();
@@ -93,8 +96,15 @@
             fileGenerateButton = new Button();
             copyTooltip = new ToolTip(components);
             folderBrowseDialog = new FolderBrowserDialog();
+            dateCheckGroupbox = new GroupBox();
+            label1 = new Label();
+            dateCheckResult = new Label();
+            dateCheckButton = new Button();
+            dateCheckTo = new DateTimePicker();
+            dateCheckFrom = new DateTimePicker();
             generateGroupBox.SuspendLayout();
             optionsGroupbox.SuspendLayout();
+            optionsDateCheckControls.SuspendLayout();
             optionFileGenerateGroupbox.SuspendLayout();
             optionFileGenerateShowGroupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)optionFileGenerateSizeNumeric).BeginInit();
@@ -106,6 +116,7 @@
             optionTINCountGroupbox.SuspendLayout();
             checkTINGroupbox.SuspendLayout();
             fileGenerateGroupbox.SuspendLayout();
+            dateCheckGroupbox.SuspendLayout();
             SuspendLayout();
             // 
             // TINTextbox
@@ -378,16 +389,50 @@
             // 
             // optionsGroupbox
             // 
+            optionsGroupbox.Controls.Add(optionsDateCheckControls);
             optionsGroupbox.Controls.Add(optionFileGenerateGroupbox);
             optionsGroupbox.Controls.Add(optionSymbolsCountGroupbox);
             optionsGroupbox.Controls.Add(optionCheckTINGroupbox);
             optionsGroupbox.Controls.Add(optionTINCountGroupbox);
             optionsGroupbox.Location = new Point(568, 12);
             optionsGroupbox.Name = "optionsGroupbox";
-            optionsGroupbox.Size = new Size(284, 593);
+            optionsGroupbox.Size = new Size(284, 677);
             optionsGroupbox.TabIndex = 3;
             optionsGroupbox.TabStop = false;
             optionsGroupbox.Text = "Опции";
+            // 
+            // optionsDateCheckControls
+            // 
+            optionsDateCheckControls.Controls.Add(optionsDateCheckNo);
+            optionsDateCheckControls.Controls.Add(optionsDateCheckYes);
+            optionsDateCheckControls.Location = new Point(6, 590);
+            optionsDateCheckControls.Name = "optionsDateCheckControls";
+            optionsDateCheckControls.Size = new Size(272, 50);
+            optionsDateCheckControls.TabIndex = 7;
+            optionsDateCheckControls.TabStop = false;
+            optionsDateCheckControls.Text = "Учитывать текущий день?";
+            // 
+            // optionsDateCheckNo
+            // 
+            optionsDateCheckNo.AutoSize = true;
+            optionsDateCheckNo.Checked = true;
+            optionsDateCheckNo.Location = new Point(49, 22);
+            optionsDateCheckNo.Name = "optionsDateCheckNo";
+            optionsDateCheckNo.Size = new Size(45, 19);
+            optionsDateCheckNo.TabIndex = 3;
+            optionsDateCheckNo.TabStop = true;
+            optionsDateCheckNo.Text = "Нет";
+            optionsDateCheckNo.UseVisualStyleBackColor = true;
+            // 
+            // optionsDateCheckYes
+            // 
+            optionsDateCheckYes.AutoSize = true;
+            optionsDateCheckYes.Location = new Point(4, 22);
+            optionsDateCheckYes.Name = "optionsDateCheckYes";
+            optionsDateCheckYes.Size = new Size(39, 19);
+            optionsDateCheckYes.TabIndex = 2;
+            optionsDateCheckYes.Text = "Да";
+            optionsDateCheckYes.UseVisualStyleBackColor = true;
             // 
             // optionFileGenerateGroupbox
             // 
@@ -758,11 +803,69 @@
             fileGenerateButton.UseVisualStyleBackColor = true;
             fileGenerateButton.Click += fileGenerateButton_Click;
             // 
+            // dateCheckGroupbox
+            // 
+            dateCheckGroupbox.Controls.Add(label1);
+            dateCheckGroupbox.Controls.Add(dateCheckResult);
+            dateCheckGroupbox.Controls.Add(dateCheckButton);
+            dateCheckGroupbox.Controls.Add(dateCheckTo);
+            dateCheckGroupbox.Controls.Add(dateCheckFrom);
+            dateCheckGroupbox.Location = new Point(12, 611);
+            dateCheckGroupbox.Name = "dateCheckGroupbox";
+            dateCheckGroupbox.Size = new Size(550, 78);
+            dateCheckGroupbox.TabIndex = 6;
+            dateCheckGroupbox.TabStop = false;
+            dateCheckGroupbox.Text = "Дни между датами";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(147, 35);
+            label1.Name = "label1";
+            label1.Size = new Size(17, 15);
+            label1.TabIndex = 21;
+            label1.Text = "--";
+            // 
+            // dateCheckResult
+            // 
+            dateCheckResult.AutoSize = true;
+            dateCheckResult.Location = new Point(319, 35);
+            dateCheckResult.Name = "dateCheckResult";
+            dateCheckResult.Size = new Size(60, 15);
+            dateCheckResult.TabIndex = 20;
+            dateCheckResult.Text = "5000 дней";
+            dateCheckResult.Visible = false;
+            // 
+            // dateCheckButton
+            // 
+            dateCheckButton.Location = new Point(416, 31);
+            dateCheckButton.Name = "dateCheckButton";
+            dateCheckButton.Size = new Size(100, 23);
+            dateCheckButton.TabIndex = 19;
+            dateCheckButton.Text = "Рассчитать";
+            dateCheckButton.UseVisualStyleBackColor = true;
+            dateCheckButton.Click += dateCheckButton_Click;
+            // 
+            // dateCheckTo
+            // 
+            dateCheckTo.Location = new Point(170, 31);
+            dateCheckTo.Name = "dateCheckTo";
+            dateCheckTo.Size = new Size(135, 23);
+            dateCheckTo.TabIndex = 1;
+            // 
+            // dateCheckFrom
+            // 
+            dateCheckFrom.Location = new Point(6, 31);
+            dateCheckFrom.Name = "dateCheckFrom";
+            dateCheckFrom.Size = new Size(135, 23);
+            dateCheckFrom.TabIndex = 0;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(864, 617);
+            ClientSize = new Size(864, 700);
+            Controls.Add(dateCheckGroupbox);
             Controls.Add(fileGenerateGroupbox);
             Controls.Add(checkTINGroupbox);
             Controls.Add(optionsGroupbox);
@@ -773,12 +876,14 @@
             MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "tester-tools v0.2";
+            Text = "tester-tools v0.3";
             FormClosing += MainForm_FormClosing;
             Load += MainForm_Load;
             generateGroupBox.ResumeLayout(false);
             generateGroupBox.PerformLayout();
             optionsGroupbox.ResumeLayout(false);
+            optionsDateCheckControls.ResumeLayout(false);
+            optionsDateCheckControls.PerformLayout();
             optionFileGenerateGroupbox.ResumeLayout(false);
             optionFileGenerateGroupbox.PerformLayout();
             optionFileGenerateShowGroupbox.ResumeLayout(false);
@@ -799,6 +904,8 @@
             checkTINGroupbox.PerformLayout();
             fileGenerateGroupbox.ResumeLayout(false);
             fileGenerateGroupbox.PerformLayout();
+            dateCheckGroupbox.ResumeLayout(false);
+            dateCheckGroupbox.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -867,5 +974,14 @@
         private Button phoneGenerateButton;
         private TextBox phoneGenerateTextbox;
         private Label phoneGenerateLabel;
+        private GroupBox optionsDateCheckControls;
+        private RadioButton optionsDateCheckNo;
+        private RadioButton optionsDateCheckYes;
+        private GroupBox dateCheckGroupbox;
+        private Button dateCheckButton;
+        private DateTimePicker dateCheckTo;
+        private DateTimePicker dateCheckFrom;
+        private Label dateCheckResult;
+        private Label label1;
     }
 }

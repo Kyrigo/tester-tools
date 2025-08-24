@@ -71,7 +71,7 @@ namespace tester_tools
         {
             if (KPPTextbox.Text != string.Empty)
             {
-                Clipboard.SetText(OGRNTextbox.Text);
+                Clipboard.SetText(KPPTextbox.Text);
             }
             else
             {
@@ -275,6 +275,22 @@ namespace tester_tools
             if (selectFolder == DialogResult.OK)
             {
                 optionTextGenerateFilePath.Text = folderBrowseDialog.SelectedPath;
+            }
+        }
+
+        private void dateCheckButton_Click(object sender, EventArgs e)
+        {
+            var days = DaysBetweenDates(dateCheckFrom.Value, dateCheckTo.Value);
+
+            if (optionsDateCheckYes.Checked)
+            {
+                dateCheckResult.Text = $"{days + 1} дней/дня";
+                dateCheckResult.Visible = true;
+            }
+            else
+            {
+                dateCheckResult.Text = $"{days} дней/дня";
+                dateCheckResult.Visible = true;
             }
         }
     }

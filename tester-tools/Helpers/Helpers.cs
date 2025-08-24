@@ -15,5 +15,15 @@
                 MessageBox.Show("ИНН некорректный", "Проверка ИНН", MessageBoxButtons.OK, icon);
             }
         }
+
+        public static int DaysBetweenDates(DateTime dateFrom, DateTime dateTo)
+        {
+            if (dateFrom == dateTo)
+            {
+                return 0;
+            }
+
+            return dateTo.Subtract(dateFrom).Days;
+        }
     }
 }
